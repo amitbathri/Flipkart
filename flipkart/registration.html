@@ -1,0 +1,151 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style>
+        body, h2, form, input, button {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Basic styling */
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(to right, #ff7e5f, #feb47b); /* Colorful gradient background */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .register-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            width: 100%;
+        }
+
+        .register-box {
+            background: #ffffff;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            text-align: center;
+        }
+
+            .register-box h2 {
+                margin-bottom: 20px;
+                font-size: 24px;
+                color: #ff7e5f;
+            }
+
+        .register-input {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin: 10px 0;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            outline: none;
+            font-size: 16px;
+        }
+
+            .register-input:focus {
+                border-color: #ff7e5f;
+            }
+
+        .register-button {
+            width: 100%;
+            padding: 10px;
+            background-color: #ff7e5f;
+            border: none;
+            border-radius: 5px;
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+            .register-button:hover {
+                background-color: #feb47b;
+            }
+
+        .login-link {
+            margin-top: 20px;
+        }
+
+            .login-link a {
+                color: #ff7e5f;
+                text-decoration: none;
+            }
+
+                .login-link a:hover {
+                    text-decoration: underline;
+                }
+
+        .error-message {
+            color: red;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="register-container">
+        <div class="register-box">
+            <h2>Register</h2>
+            <form id="registerForm">
+                <input type="text" class="register-input" placeholder="Username" required>
+
+                <input type="email" class="register-input" placeholder="Email" required>
+
+                <input type="password" class="register-input" placeholder="Password">
+
+                <input type="password" class="register-input" placeholder="Confirm Password">
+
+
+                <button type="submit" class="register-button">Register</button>
+                <p id="error-message" class="error-message"></p>
+            </form>
+
+
+
+
+            <p class="login-link">Already have an account? <a href="HtmlPage.html">Login</a></p>
+        </div>
+    </div>
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            document.getElementById('registerForm').addEventListener('submit', function (event) {
+                var password = document.getElementById('password').value;
+                var confirmPassword = document.getElementById('confirmPassword').value;
+                var errorMessage = document.getElementById('error-message');
+
+                // Clear any previous error messages
+                errorMessage.textContent = '';
+
+                // Validation checks
+                if (password.length < 8) {
+                    errorMessage.textContent = 'Password must be at least 8 characters long.';
+                    event.preventDefault(); // Prevent form submission
+                    return;
+                }
+
+                if (password !== confirmPassword) {
+                    errorMessage.textContent = 'Passwords do not match.';
+                    event.preventDefault(); // Prevent form submission
+                    return;
+                }
+
+                // Form is valid, proceed with submission
+            });
+        });
+    </script>
+
+</body>
+</html>
